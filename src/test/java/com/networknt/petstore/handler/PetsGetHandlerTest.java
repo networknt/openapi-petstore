@@ -52,7 +52,7 @@ public class PetsGetHandlerTest {
         final CountDownLatch latch = new CountDownLatch(1);
         SimpleConnectionHolder.ConnectionToken connectionToken = null;
         final AtomicReference<ClientResponse> reference = new AtomicReference<>();
-        String requestUri = "/v1/pets?limit=24";
+        String requestUri = "/v1/pets?limit=74";
         String httpMethod = "get";
         try {
             if(enableHttps) {

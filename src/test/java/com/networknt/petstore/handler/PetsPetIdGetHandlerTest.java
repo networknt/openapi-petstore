@@ -52,7 +52,7 @@ public class PetsPetIdGetHandlerTest {
         final CountDownLatch latch = new CountDownLatch(1);
         SimpleConnectionHolder.ConnectionToken connectionToken = null;
         final AtomicReference<ClientResponse> reference = new AtomicReference<>();
-        String requestUri = "/v1/pets/NAzTxVDMhGLNQDJBcCnTWexpfQfB";
+        String requestUri = "/v1/pets/SOgZzshvkcDQRJxruZDHWABowxYyJ";
         String httpMethod = "get";
         try {
             if(enableHttps) {

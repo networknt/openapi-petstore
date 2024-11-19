@@ -52,7 +52,7 @@ public class PetsPetIdDeleteHandlerTest {
         final CountDownLatch latch = new CountDownLatch(1);
         SimpleConnectionHolder.ConnectionToken connectionToken = null;
         final AtomicReference<ClientResponse> reference = new AtomicReference<>();
-        String requestUri = "/v1/pets/VjmMoACGJKN";
+        String requestUri = "/v1/pets/uljJhmzVBmTbvPpAniWJD";
         String httpMethod = "delete";
         try {
             if(enableHttps) {
@@ -64,7 +64,7 @@ public class PetsPetIdDeleteHandlerTest {
             ClientRequest request = new ClientRequest().setPath(requestUri).setMethod(Methods.DELETE);
             
             //customized header parameters 
-            request.getRequestHeaders().put(new HttpString("key"), "soCFgLpF");
+            request.getRequestHeaders().put(new HttpString("key"), "MEgwcNiE");
             request.getRequestHeaders().put(new HttpString("host"), "localhost");
             connection.sendRequest(request, client.createClientCallback(reference, latch));
             
