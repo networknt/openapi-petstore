@@ -11,6 +11,8 @@ import io.undertow.server.HttpServerExchange;
 import io.undertow.util.Headers;
 import io.undertow.util.HeaderMap;
 
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Deque;
 import java.util.Map;
 
@@ -20,14 +22,13 @@ https://doc.networknt.com/development/business-handler/rest/
 */
 public class DocumentsGetHandler implements LightHttpHandler {
 
-    
+
     @Override
     public void handleRequest(HttpServerExchange exchange) throws Exception {
-        // HeaderMap requestHeaders = exchange.getRequestHeaders();
-        // Map<String, Deque<String>> queryParameters = exchange.getQueryParameters();
-        String responseBody = "{}";
+        InputStream inputStream = Config.getInstance().getInputStreamFromFile("document.json");
+        String text = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
         exchange.getResponseHeaders().add(Headers.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         exchange.setStatusCode(HttpStatus.OK.value());
-        exchange.getResponseSender().send(responseBody);
+        exchange.getResponseSender().send(text);
     }
 }

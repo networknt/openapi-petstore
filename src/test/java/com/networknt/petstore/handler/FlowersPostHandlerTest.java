@@ -4,10 +4,11 @@ package com.networknt.petstore.handler;
 import com.networknt.client.Http2Client;
 import com.networknt.client.simplepool.SimpleConnectionHolder;
 import com.networknt.exception.ClientException;
-import com.networknt.server.ServerConfig;
+import com.networknt.http.MediaType;
 import com.networknt.openapi.OpenApiHandler;
 import com.networknt.openapi.ResponseValidator;
 import com.networknt.openapi.SchemaValidator;
+import com.networknt.server.ServerConfig;
 import com.networknt.status.Status;
 import com.networknt.utility.StringUtils;
 import io.undertow.UndertowOptions;
@@ -29,10 +30,10 @@ import org.xnio.OptionMap;
 import java.net.URI;
 import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 
-@Disabled
 @ExtendWith(TestServer.class)
 public class FlowersPostHandlerTest {
 
@@ -62,14 +63,14 @@ public class FlowersPostHandlerTest {
             }
             ClientConnection connection = (ClientConnection) connectionToken.getRawConnection();
             ClientRequest request = new ClientRequest().setPath(requestUri).setMethod(Methods.POST);
-            
-            request.getRequestHeaders().put(Headers.CONTENT_TYPE, JSON_MEDIA_TYPE);
+
+            request.getRequestHeaders().put(Headers.CONTENT_TYPE, MediaType.TEXT_XML_VALUE);
             request.getRequestHeaders().put(Headers.TRANSFER_ENCODING, "chunked");
             //customized header parameters 
             request.getRequestHeaders().put(new HttpString("host"), "localhost");
-            connection.sendRequest(request, client.createClientCallback(reference, latch, "{\"content\": \"request body to be replaced\"}"));
-            
-            latch.await();
+            connection.sendRequest(request, client.createClientCallback(reference, latch, "<Flower><name>Poppy</name><color>RED</color><petals>9</petals></Flower>"));
+
+            latch.await(3000, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
             logger.error("Exception: ", e);
             throw new ClientException(e);
@@ -87,7 +88,7 @@ public class FlowersPostHandlerTest {
         } else {
             status = responseValidator.validateResponseContent(body, requestUri, httpMethod, String.valueOf(statusCode), JSON_MEDIA_TYPE);
         }
-        assertNotNull(status);
+        assertNull(status);
     }
 }
 
