@@ -1,11 +1,8 @@
 package com.networknt.petstore.handler;
 
 import com.networknt.config.Config;
-import com.networknt.http.MediaType;
+import com.networknt.http.*;
 import com.networknt.handler.LightHttpHandler;
-import com.networknt.http.HttpMethod;
-import com.networknt.http.RequestEntity;
-import com.networknt.http.ResponseEntity;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.util.HeaderMap;
 import io.undertow.util.Headers;
@@ -29,9 +26,8 @@ public class PetsPetIdGetHandler implements LightHttpHandler {
     @Override
     public void handleRequest(HttpServerExchange exchange) throws Exception {
         exchange.getResponseHeaders().add(Headers.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-        InputStream inputStream = Config.getInstance().getInputStreamFromFile("big.json");
-        String text = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-        exchange.setStatusCode(200);
-        exchange.getResponseSender().send(text);
+        String responseBody = "{\"id\":1,\"name\":\"Jessica Right\",\"tag\":\"pet\"}";
+        exchange.setStatusCode(HttpStatus.OK.value());
+        exchange.getResponseSender().send(responseBody);
     }
 }

@@ -26,7 +26,7 @@ public class PetsPostHandler implements LightHttpHandler {
     public void handleRequest(HttpServerExchange exchange) throws Exception {
         exchange.getResponseHeaders().add(Headers.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         String body = "{}";
-        exchange.setStatusCode(HttpStatus.OK.value());
+        exchange.setStatusCode(HttpStatus.CREATED.value());
         exchange.getResponseSender().send(body);
     }
 }
