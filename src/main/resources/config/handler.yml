@@ -72,6 +72,7 @@ handlers:
   - com.networknt.petstore.handler.PetsGetHandler
   - com.networknt.petstore.handler.PetsPostHandler
   - com.networknt.petstore.handler.PetsPetIdGetHandler
+  - com.networknt.petstore.handler.PetsPetIdPutHandler
   - com.networknt.petstore.handler.PetsPetIdDeleteHandler
   - com.networknt.petstore.handler.NotificationsGetHandler
   - com.networknt.petstore.handler.FlowersPostHandler
@@ -109,6 +110,11 @@ paths:
     exec:
       - default
       - com.networknt.petstore.handler.PetsPetIdGetHandler
+  - path: '/v1/pets/{petId}'
+    method: 'PUT'
+    exec:
+      - default
+      - com.networknt.petstore.handler.PetsPetIdPutHandler
   - path: '/v1/pets/{petId}'
     method: 'DELETE'
     exec:
