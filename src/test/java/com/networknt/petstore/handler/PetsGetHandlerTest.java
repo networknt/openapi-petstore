@@ -79,6 +79,11 @@ public class PetsGetHandlerTest {
         ResponseValidator responseValidator = new ResponseValidator(schemaValidator);
         int statusCode = reference.get().getResponseCode();
         Status status;
+
+        /* endpoint returns all request headers with an appended 're-' prefix. */
+        HeaderValues hostHeader = reference.get().getResponseHeaders().get("req-X-Correlation-Id");
+        assertNotNull(hostHeader);
+
         if(contentTypeName.isPresent()) {
             status = responseValidator.validateResponseContent(body, requestUri, httpMethod, String.valueOf(statusCode), contentTypeName.get().getFirst());
         } else {

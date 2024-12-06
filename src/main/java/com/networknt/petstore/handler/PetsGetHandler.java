@@ -26,6 +26,9 @@ public class PetsGetHandler implements LightHttpHandler {
         exchange.getResponseHeaders().add(Headers.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         exchange.getResponseHeaders().put(new HttpString("My-Header"), "test");
         exchange.getResponseHeaders().put(new HttpString("X-Test-1"), "test1");
+        exchange.getRequestHeaders().forEach((header) -> {
+            exchange.getResponseHeaders().add(new HttpString("req-" + header.getHeaderName()), header.getFirst());
+        });
         String body = "[{\"id\":1,\"name\":\"catten\",\"tag\":\"cat\"},{\"id\":2,\"name\":\"doggy\",\"tag\":\"dog\"}]";
         exchange.setStatusCode(HttpStatus.OK.value());
         exchange.getResponseSender().send(body);
