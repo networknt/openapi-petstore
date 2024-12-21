@@ -13,6 +13,9 @@ auditOnError: ${handler.auditOnError:false}
 # default, if not set:false
 auditStackTrace: ${handler.auditStackTrace:false}
 
+# Base Path of the API endpoints
+basePath: ${handler.basePath:/}
+
 #------------------------------------------------------------------------------
 # Support individual handler chains for each separate endpoint. It allows framework
 # handlers like health check, server info to bypass majority of the middleware handlers
@@ -74,6 +77,11 @@ handlers:
   - com.networknt.petstore.handler.PetsPetIdGetHandler
   - com.networknt.petstore.handler.PetsPetIdPutHandler
   - com.networknt.petstore.handler.PetsPetIdDeleteHandler
+  - com.networknt.petstore.handler.AccountsGetHandler
+  - com.networknt.petstore.handler.AccountsPostHandler
+  - com.networknt.petstore.handler.AccountsAccountNoGetHandler
+  - com.networknt.petstore.handler.AccountsAccountNoPutHandler
+  - com.networknt.petstore.handler.AccountsAccountNoDeleteHandler
   - com.networknt.petstore.handler.NotificationsGetHandler
   - com.networknt.petstore.handler.FlowersPostHandler
   - com.networknt.petstore.handler.DocumentsGetHandler
@@ -120,6 +128,31 @@ paths:
     exec:
       - default
       - com.networknt.petstore.handler.PetsPetIdDeleteHandler
+  - path: '/v1/accounts'
+    method: 'GET'
+    exec:
+      - default
+      - com.networknt.petstore.handler.AccountsGetHandler
+  - path: '/v1/accounts'
+    method: 'POST'
+    exec:
+      - default
+      - com.networknt.petstore.handler.AccountsPostHandler
+  - path: '/v1/accounts/{accountNo}'
+    method: 'GET'
+    exec:
+      - default
+      - com.networknt.petstore.handler.AccountsAccountNoGetHandler
+  - path: '/v1/accounts/{accountNo}'
+    method: 'PUT'
+    exec:
+      - default
+      - com.networknt.petstore.handler.AccountsAccountNoPutHandler
+  - path: '/v1/accounts/{accountNo}'
+    method: 'DELETE'
+    exec:
+      - default
+      - com.networknt.petstore.handler.AccountsAccountNoDeleteHandler
   - path: '/v1/notifications'
     method: 'GET'
     exec:
