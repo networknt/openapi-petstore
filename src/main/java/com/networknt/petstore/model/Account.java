@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Account  {
 
     private String accountNo;
-    private String ownerId;
+    private String userId;
     private String accountType;
     private String firstName;
     private String lastName;
@@ -26,13 +26,13 @@ public class Account  {
         this.accountNo = accountNo;
     }
 
-    @JsonProperty("ownerId")
-    public String getOwnerId() {
-        return ownerId;
+    @JsonProperty("userId")
+    public String getUserId() {
+        return userId;
     }
 
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @JsonProperty("accountType")
@@ -84,7 +84,7 @@ public class Account  {
         Account Account = (Account) o;
 
         return Objects.equals(accountNo, Account.accountNo) &&
-               Objects.equals(ownerId, Account.ownerId) &&
+               Objects.equals(userId, Account.userId) &&
                Objects.equals(accountType, Account.accountType) &&
                Objects.equals(firstName, Account.firstName) &&
                Objects.equals(lastName, Account.lastName) &&
@@ -93,14 +93,14 @@ public class Account  {
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountNo, ownerId, accountType, firstName, lastName, status);
+        return Objects.hash(accountNo, userId, accountType, firstName, lastName, status);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class Account {\n");
-        sb.append("    accountNo: ").append(toIndentedString(accountNo)).append("\n");        sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");        sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");        sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");        sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");        sb.append("    status: ").append(toIndentedString(status)).append("\n");
+        sb.append("    accountNo: ").append(toIndentedString(accountNo)).append("\n");        sb.append("    userId: ").append(toIndentedString(userId)).append("\n");        sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");        sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");        sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");        sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("}");
         return sb.toString();
     }

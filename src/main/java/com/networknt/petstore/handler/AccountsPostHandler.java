@@ -15,9 +15,9 @@ import java.util.Deque;
 import java.util.Map;
 
 /**
-For more information on how to write business handlers, please check the link below.
-https://doc.networknt.com/development/business-handler/rest/
-*/
+ * This is the endpoint to create a new account in the system.
+ *
+ */
 public class AccountsPostHandler implements LightHttpHandler {
 
     

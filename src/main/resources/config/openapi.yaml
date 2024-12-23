@@ -499,13 +499,13 @@ components:
       type: "object"
       required:
       - "accountNo"
-      - "ownerId"
+      - "userId"
       - "accountType"
       - "status"
       properties:
         accountNo:
           type: "string"
-        ownerId:
+        userId:
           type: "string"
         accountType:
           type: "string"

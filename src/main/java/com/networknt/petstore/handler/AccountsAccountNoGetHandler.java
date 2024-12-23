@@ -25,7 +25,7 @@ public class AccountsAccountNoGetHandler implements LightHttpHandler {
     public void handleRequest(HttpServerExchange exchange) throws Exception {
         // HeaderMap requestHeaders = exchange.getRequestHeaders();
         // Map<String, Deque<String>> queryParameters = exchange.getQueryParameters();
-        String responseBody = "{\"accountNo\":123,\"ownerId\":\"johndoe\",\"accountType\":\"P\",\"firstName\":\"John\",\"lastName\":\"Doe\",\"status\":\"O\"}";
+        String responseBody = "{\"accountNo\":123,\"userId\":\"sh35\",\"accountType\":\"P\",\"firstName\":\"John\",\"lastName\":\"Doe\",\"status\":\"O\"}";
         exchange.getResponseHeaders().add(Headers.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         exchange.setStatusCode(HttpStatus.OK.value());
         exchange.getResponseSender().send(responseBody);
