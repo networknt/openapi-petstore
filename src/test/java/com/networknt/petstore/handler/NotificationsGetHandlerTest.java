@@ -75,7 +75,7 @@ public class NotificationsGetHandlerTest {
         }
         String body = reference.get().getAttachment(Http2Client.RESPONSE_BODY);
         int statusCode = reference.get().getResponseCode();
-        assertNull(body);
+        assertNotNull(body);
     }
 }
 
