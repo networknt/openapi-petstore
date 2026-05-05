@@ -12,7 +12,7 @@
     "sidecar": {
       "image": {
         "repository": "networknt/http-sidecar",
-        "tag": "2.2.1",
+        "tag": "2.2.1-20260505-1",
         "pullPolicy": "IfNotPresent"
       },
       "ports": {
@@ -29,7 +29,7 @@
     "api": {
       "image": {
         "repository": "networknt/openapi-petstore",
-        "tag": "2.3.4",
+        "tag": "2.3.4-20260505-1",
         "pullPolicy": "IfNotPresent"
       },
       "ports": {

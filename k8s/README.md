@@ -109,7 +109,7 @@ curl -sS http://127.0.0.1:8437/deployments \
         sidecar: {
           image: {
             repository: "networknt/http-sidecar",
-            tag: "2.2.1",
+            tag: "2.2.1-20260505-1",
             pullPolicy: "IfNotPresent"
           },
           startup: {
@@ -122,7 +122,7 @@ curl -sS http://127.0.0.1:8437/deployments \
         api: {
           image: {
             repository: "networknt/openapi-petstore",
-            tag: "2.3.4",
+            tag: "2.3.4-20260505-1",
             pullPolicy: "IfNotPresent"
           },
           startup: {
@@ -162,7 +162,7 @@ Check the request history.
 curl -sS http://127.0.0.1:8437/deployments \
     -H 'content-type: application/json' \
     -d '{
-      "requestId": "019df61e-524e-75b0-b887-c809df645fbf",
+      "requestId": "019df66a-8386-7681-8fa9-adff01006f14",
       "hostId": "01964b05-552a-7c4b-9184-6857e7f3dc5f",
       "instanceId": "openapi-petstore",
       "environment": "dev",
@@ -196,3 +196,17 @@ curl -k https://127.0.0.1:9445/health
 curl -k https://127.0.0.1:9445/v1/pets
 curl http://127.0.0.1:9080/health
 ```
+
+To clean up and redeploy. 
+
+```
+kubectl -n openapi-petstore delete deploy,svc,cm,secret \
+-l app.kubernetes.io/managed-by=light-deployer
+```
+
+Access pod shell. 
+
+```
+kubectl exec -it ai-microgateway-d7b864586-f9kgr -n openapi-petstore -- /bin/sh
+```
+

@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: http-sidecar
-          image: ${sidecar.image.repository:networknt/http-sidecar}:${sidecar.image.tag:2.2.1}
+          image: ${sidecar.image.repository:networknt/http-sidecar}:${sidecar.image.tag:2.2.1-20260505-1}
           imagePullPolicy: ${sidecar.image.pullPolicy:IfNotPresent}
           env:
             - name: LIGHT_4J_CONFIG_PASSWORD
@@ -85,7 +85,7 @@ spec:
               subPath: bootstrap.truststore
               readOnly: true
         - name: openapi-petstore
-          image: ${api.image.repository:networknt/openapi-petstore}:${api.image.tag:2.3.4}
+          image: ${api.image.repository:networknt/openapi-petstore}:${api.image.tag:2.3.4-20260505-1}
           imagePullPolicy: ${api.image.pullPolicy:IfNotPresent}
           env:
             - name: LIGHT_4J_CONFIG_PASSWORD
