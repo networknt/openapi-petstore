@@ -59,6 +59,19 @@ For a local standalone deployer started with
 }
 ```
 
+## Start Deployer
+
+cd /home/steve/workspace/light-fabric/apps/light-deployer
+
+```
+KUBECONFIG=/var/snap/microk8s/current/credentials/client.config \
+LIGHT_DEPLOYER_KUBE_MODE=real \
+LIGHT_DEPLOYER_TEMPLATE_BASE_DIR=/home/steve/workspace/openapi-petstore \
+./run.sh
+
+```
+
+
 ## Required values
 
 - `bootstrapTruststoreBase64`: base64 content of the config-server bootstrap
@@ -141,6 +154,30 @@ curl -sS http://127.0.0.1:8437/deployments \
       }
     }')"
 ```
+
+
+Check the request history.
+
+```
+curl -sS http://127.0.0.1:8437/deployments \
+    -H 'content-type: application/json' \
+    -d '{
+      "requestId": "019df61e-524e-75b0-b887-c809df645fbf",
+      "hostId": "01964b05-552a-7c4b-9184-6857e7f3dc5f",
+      "instanceId": "openapi-petstore",
+      "environment": "dev",
+      "clusterId": "local",
+      "namespace": "openapi-petstore",
+      "action": "status",
+      "template": {
+        "repoUrl": "local",
+        "ref": "main",
+        "path": "k8s/openapi-petstore"
+      }
+    }' | jq .
+
+```
+
 
 ## Validation
 
