@@ -6,18 +6,19 @@
 
 # client.yml
 client.timeout: 3000
-client.verifyHostname: true
+client.verifyHostname: false
+# client.tlsVersion: TLSv1.2
 
 # server.yml
 server.httpPort: 8080
-server.enableHttp: false
+server.enableHttp: true
 server.httpsPort: 9443
-server.enableHttps: true
-server.enableHttp2: true
+server.enableHttps: false
+server.enableHttp2: false
 server.enableRegistry: false
 server.serviceId: com.networknt.petstore-3.1.0
+server.environment: dev
 server.buildNumber: 3.1.0
-
 # security.yml
 security.enableVerifyJwt: false
 
@@ -47,8 +48,8 @@ service.singletons:
   
   
 
-
-
+# portal-registry.yml
+portalRegistry.portalUrl: https://localhost:8438
 
 # cache.yml
 cache.caches:

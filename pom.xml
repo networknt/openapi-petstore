@@ -303,9 +303,33 @@
             <artifactId>http-entity</artifactId>
             <version>${version.light-4j}</version>
         </dependency>
-        
-        
-        
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>latency-assault</artifactId>
+            <version>${version.light-4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>memory-assault</artifactId>
+            <version>${version.light-4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>exception-assault</artifactId>
+            <version>${version.light-4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>killapp-assault</artifactId>
+            <version>${version.light-4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>chaos-monkey</artifactId>
+            <version>${version.light-4j}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

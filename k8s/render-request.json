@@ -1,0 +1,65 @@
+{
+  "hostId": "01964b05-552a-7c4b-9184-6857e7f3dc5f",
+  "instanceId": "openapi-petstore-dev",
+  "environment": "dev",
+  "clusterId": "local",
+  "namespace": "openapi-petstore",
+  "action": "render",
+  "values": {
+    "namespace": "openapi-petstore",
+    "name": "openapi-petstore",
+    "replicas": 1,
+    "sidecar": {
+      "image": {
+        "repository": "networknt/http-sidecar",
+        "tag": "2.2.1",
+        "pullPolicy": "IfNotPresent"
+      },
+      "ports": {
+        "https": 9445,
+        "http": 9080
+      },
+      "startup": {
+        "host": "dev.lightapi.net",
+        "serviceId": "com.networknt.petstore-lpsc-3.1.0",
+        "envTag": "dev"
+      },
+      "lightPortalAuthorization": "Bearer <http-sidecar-token>"
+    },
+    "api": {
+      "image": {
+        "repository": "networknt/openapi-petstore",
+        "tag": "2.3.4",
+        "pullPolicy": "IfNotPresent"
+      },
+      "ports": {
+        "http": 8080
+      },
+      "startup": {
+        "host": "dev.lightapi.net",
+        "serviceId": "com.networknt.petstore-3.1.0",
+        "envTag": "dev"
+      },
+      "lightPortalAuthorization": "Bearer <openapi-petstore-token>"
+    },
+    "service": {
+      "name": "openapi-petstore",
+      "type": "ClusterIP",
+      "httpsPort": 9445,
+      "httpPort": 9080
+    },
+    "configServer": {
+      "uri": "https://192.168.5.85:8435",
+      "verifyHostName": false
+    },
+    "lightEnv": "dev",
+    "light4jConfigPassword": "DEV",
+    "configServerTruststorePassword": "password",
+    "bootstrapTruststoreBase64": "<base64-bootstrap-truststore>"
+  },
+  "template": {
+    "repoUrl": "local",
+    "ref": "main",
+    "path": "k8s"
+  }
+}

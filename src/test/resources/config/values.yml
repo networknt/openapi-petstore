@@ -6,7 +6,7 @@
 
 # client.yml
 client.timeout: 3000
-client.verifyHostname: true
+client.verifyHostname: false
 
 # server.yml
 server.httpPort: 49587
