@@ -47,6 +47,8 @@ spec:
                   key: sidecar-light-portal-authorization
             - name: LIGHT_ENV
               value: ${lightEnv:dev}
+            - name: STATUS_HOST_IP
+              value: ${name:openapi-petstore}.${namespace:openapi-petstore}
             - name: JAVA_TOOL_OPTIONS
               value: ${sidecar.javaToolOptions:-XX:MaxRAMPercentage=75.0}
           ports:
@@ -111,6 +113,8 @@ spec:
                   key: api-light-portal-authorization
             - name: LIGHT_ENV
               value: ${lightEnv:dev}
+            - name: STATUS_HOST_IP
+              value: ${name:openapi-petstore}.${namespace:openapi-petstore}
             - name: JAVA_TOOL_OPTIONS
               value: ${api.javaToolOptions:-XX:MaxRAMPercentage=75.0}
           ports:

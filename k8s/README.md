@@ -33,6 +33,10 @@ The sidecar and backend use separate config-server startup identities:
 - sidecar: `com.networknt.petstore-lpsc-3.1.0` with `envTag: dev`
 - backend: `com.networknt.petstore-3.1.0` with `envTag: dev`
 
+Both containers set `STATUS_HOST_IP` to `${name}.${namespace}` so
+light-4j registers the Kubernetes Service DNS name, for example
+`openapi-petstore.openapi-petstore`, instead of the pod IP.
+
 Use the matching authorization token for each identity. Do not commit raw JWTs
 to this repository.
 
@@ -109,7 +113,7 @@ curl -sS http://127.0.0.1:8437/deployments \
         sidecar: {
           image: {
             repository: "networknt/http-sidecar",
-            tag: "2.2.1-20260505-1",
+            tag: "2.2.1-20260506-1",
             pullPolicy: "IfNotPresent"
           },
           startup: {
@@ -122,7 +126,7 @@ curl -sS http://127.0.0.1:8437/deployments \
         api: {
           image: {
             repository: "networknt/openapi-petstore",
-            tag: "2.3.4-20260505-1",
+            tag: "2.2.1-20260506-1",
             pullPolicy: "IfNotPresent"
           },
           startup: {
@@ -210,3 +214,4 @@ Access pod shell.
 kubectl exec -it ai-microgateway-d7b864586-f9kgr -n openapi-petstore -- /bin/sh
 ```
 
+The host is openapi-petstore.openapi-petstore
