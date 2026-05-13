@@ -9,10 +9,10 @@ client.timeout: 3000
 client.verifyHostname: false
 
 # server.yml
-server.httpPort: 9080
-server.enableHttp: true
-server.enableHttps: false
-server.enableHttp2: false
+server.httpsPort: 9443
+server.enableHttp: false
+server.enableHttps: true
+server.enableHttp2: true
 server.enableRegistry: true
 server.serviceId: com.networknt.petstore-3.1.0
 server.environment: dev
